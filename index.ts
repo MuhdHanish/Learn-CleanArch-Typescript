@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 
-import connectDatabase from "./src/framework/database/dbConfig";
+import connectDatabase from "./src/framework/database/config/dbConfig";
 import userRoutes from "./src/interface/routes/userRoutes";
 
 import { ErrorHandler } from "./src/utils/errorHandler";
