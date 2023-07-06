@@ -6,7 +6,8 @@ export type userRepository = {
  create: (user: User) => Promise<User | null>;
  find: () => Promise<User[] | null>;
  findOne: (user: User) => Promise<User | null>;
-}
+ deleteAcc: (user: User) => Promise<void>;
+};
 
 export const userRepositoryEmpl = (userModel: MongoDBUser): userRepository => {
 
@@ -30,11 +31,17 @@ export const userRepositoryEmpl = (userModel: MongoDBUser): userRepository => {
   return currentUser ? currentUser.toObject() : null;
  };
 
+ const deleteAcc = async (user: User): Promise<void> => {
+  await userModel.deleteOne(user);
+  return;
+ }
+
  return {
   findByEmail,
   create,
   find,
-  findOne
+  findOne,
+  deleteAcc
  };
  
-}
+};
