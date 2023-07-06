@@ -1,7 +1,8 @@
-import { Request, Response, Router } from "express";
+import {  Router } from "express";
 import { signupController } from "../controller/userSignupController";
 import { findController } from "../controller/findController";
 import { loginController } from "../controller/loginController";
+import { findByEmailController } from "../controller/findByEmailController";
 const router = Router();
 
 // POST 
@@ -10,5 +11,6 @@ router.post('/login', loginController);
 
 // GET
 router.get('/find', findController);
+router.post('/find', findByEmailController);
 
 export default router;
